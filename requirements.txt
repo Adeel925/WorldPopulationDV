@@ -3,5 +3,6 @@ pandas
 plotly
 requests
 numpy
+lxml
 beautifulsoup4
 gunicorn
