@@ -4,5 +4,4 @@ plotly
 requests
 numpy
 beautifulsoup4
-worldometer
 gunicorn
