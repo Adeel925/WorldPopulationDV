@@ -8,23 +8,22 @@ import requests
 from dash.dependencies import Output, Input, State
 from bs4 import BeautifulSoup
 import plotly.graph_objs as go
-from worldometer import Worldometer
-import worldometer
+#from worldometer import Worldometer
+#import worldometer
 from dash import dash_table
 import plotly.subplots as sp
 
-
 app = dash.Dash(__name__)
 server = app.server
-w = Worldometer()
-
+#w = Worldometer()
+"""
 pop = worldometer.current_world_population()["current_world_population"]
 all_matrics = w.metrics_with_labels()
 
 
 
 metric_df = pd.DataFrame(list(all_matrics.items()), columns=['Metrics', 'Value'])
-
+"""
 ################################
 # BAR Chart
 ################################
@@ -113,36 +112,7 @@ app.layout = html.Div(children=[
         value='light',
         labelStyle={'display': 'inline-block'}
     ),
-    html.Hr(),
-    html.Center(children=[
-    html.H2("World population some basic information"),
-    html.P("In the following table the Metrics and values shows real time data with current world updates"),
-	html.Div([
-        dash_table.DataTable(
-            id='table',
-            columns=[{'name': i, 'id': i} for i in metric_df.columns],
-            data=metric_df.head(5).to_dict('records'),
-            style_header={
-                'backgroundColor': 'deepskyblue',
-                'fontWeight': 'bold'
-            },
-            style_cell={
-                'textAlign': 'left',
-                'backgroundColor': 'lightblue'
-            },
-            style_data_conditional=[
-                {
-                    'if': {'row_index': 'odd'},
-                }
-            ]
-        )
-    ],
-    style={
-        'margin': '50px',
-        'padding': '20px',
-        'border': 'thin lightgrey solid',
-        "width":"60%"
-    })]),
+
 	html.Hr(),
 
 	html.Center(children=[
@@ -214,6 +184,38 @@ def update_figure_theme(theme):
     #style_cell={'backgroundColor': 'cadetblue',}
     
     return style,bar_fig, scatter_fig, pie_fig
+
+"""
+    html.Hr(),
+    html.Center(children=[
+    html.H2("World population some basic information"),
+    html.P("In the following table the Metrics and values shows real time data with current world updates"),
+	html.Div([
+        dash_table.DataTable(
+            id='table',
+            columns=[{'name': i, 'id': i} for i in metric_df.columns],
+            data=metric_df.head(5).to_dict('records'),
+            style_header={
+                'backgroundColor': 'deepskyblue',
+                'fontWeight': 'bold'
+            },
+            style_cell={
+                'textAlign': 'left',
+                'backgroundColor': 'lightblue'
+            },
+            style_data_conditional=[
+                {
+                    'if': {'row_index': 'odd'},
+                }
+            ]
+        )
+    ],
+    style={
+        'margin': '50px',
+        'padding': '20px',
+        'border': 'thin lightgrey solid',
+        "width":"60%"
+    })]),"""
 
 # Run the app
 if __name__ == '__main__':
