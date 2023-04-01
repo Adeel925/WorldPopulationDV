@@ -14,6 +14,8 @@ from dash import dash_table
 import plotly.subplots as sp
 
 
+app = dash.Dash(__name__)
+server = app.server
 w = Worldometer()
 
 pop = worldometer.current_world_population()["current_world_population"]
@@ -100,7 +102,6 @@ pie_fig.update_layout(template="plotly_dark")
 
 
 # Define the layout
-app = dash.Dash(__name__)
 app.layout = html.Div(children=[
     html.H1('Population Data visualization'),
     dcc.RadioItems(
